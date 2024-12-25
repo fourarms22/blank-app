@@ -5,11 +5,11 @@ import snowflake.connector
 import streamlit as st
 # streamlit run C:\MySpace\CodeSpace\PythonWorkspace\PlanningAI\invoker.py
 
-HOST = "zjfnosn-ji26552.snowflakecomputing.com"
-DATABASE = "CORTEX_ANALYST_DEMO"
-SCHEMA = "PO_DEMO"
-STAGE = "RAW_DATA"
-FILE = "po_demo.yaml"
+HOST = process.env.HOST
+DATABASE = process.env.DATABASE
+SCHEMA = process.env.SCHEMA
+STAGE = process.env.STAGE
+FILE = process.env.FILE
 DB_PASSWORD = process.env.DB_PASSWORD
 
 if 'CONN' not in st.session_state or st.session_state.CONN is None:
