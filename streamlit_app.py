@@ -16,7 +16,7 @@ if 'CONN' not in st.session_state or st.session_state.CONN is None:
         password=st.secrets['DB_PASSWORD'],
         account=st.secrets['ACCOUNT'],
         host=st.secrets['HOST'],
-        port=st.secrets['443'],
+        port=st.secrets['PORT'],
         warehouse=st.secrets['WAREHOUSE'],
         role=st.secrets['ROLE']
     )
@@ -101,7 +101,7 @@ def display_content(
                     else:
                         st.dataframe(df)
 
-
+st.set_page_config(page_title="Plan Optimus")
 st.title("Plan Optimus - AI Agent")
 # st.markdown(f"Semantic Model: `{FILE}`")
 
