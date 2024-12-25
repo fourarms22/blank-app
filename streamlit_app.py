@@ -4,30 +4,21 @@ import requests
 import snowflake.connector
 import streamlit as st
 import os
-# # streamlit run C:\MySpace\CodeSpace\PythonWorkspace\PlanningAI\invoker.py
 
-# HOST = process.env.HOST
-# DATABASE = process.env.DATABASE
-# SCHEMA = process.env.SCHEMA
-# STAGE = process.env.STAGE
-# FILE = process.env.FILE
-
-HOST = st.secrets['HOST']
 DATABASE = st.secrets['DATABASE']
 SCHEMA = st.secrets['SCHEMA']
 STAGE = st.secrets['STAGE'] 
 FILE = st.secrets['FILE']
-DB_PASSWORD = st.secrets['DB_PASSWORD']
 
 if 'CONN' not in st.session_state or st.session_state.CONN is None:
     st.session_state.CONN = snowflake.connector.connect(
         user=st.secrets['USER'],
-        password=DB_PASSWORD,
-        account="JI26552",
-        host=HOST,
-        port=443,
-        warehouse="COMPUTE_WH",
-        role="ACCOUNTADMIN",
+        password=st.secrets['DB_PASSWORD'],
+        account=st.secrets['ACCOUNT'],
+        host=st.secrets['HOST'],
+        port=st.secrets['443'],
+        warehouse=st.secrets['WAREHOUSE'],
+        role=st.secrets['ROLE']
     )
 
 
@@ -112,7 +103,7 @@ def display_content(
 
 
 st.title("Plan Optimus - AI Agent")
-st.markdown(f"Semantic Model: `{FILE}`")
+# st.markdown(f"Semantic Model: `{FILE}`")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
