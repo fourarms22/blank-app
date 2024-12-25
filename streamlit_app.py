@@ -17,7 +17,7 @@ DATABASE = "CORTEX_ANALYST_DEMO"
 SCHEMA = "PO_DEMO"
 STAGE = "RAW_DATA"
 FILE = "po_demo.yaml"
-DB_PASSWORD = vars.DB_PASSWORD
+DB_PASSWORD = {{vars.DB_PASSWORD}}
 
 if 'CONN' not in st.session_state or st.session_state.CONN is None:
     st.session_state.CONN = snowflake.connector.connect(
