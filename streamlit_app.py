@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import snowflake.connector
 import streamlit as st
+import os
 # # streamlit run C:\MySpace\CodeSpace\PythonWorkspace\PlanningAI\invoker.py
 
 # HOST = process.env.HOST
@@ -16,7 +17,7 @@ DATABASE = "CORTEX_ANALYST_DEMO"
 SCHEMA = "PO_DEMO"
 STAGE = "RAW_DATA"
 FILE = "po_demo.yaml"
-DB_PASSWORD = process.env.DB_PASSWORD
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 if 'CONN' not in st.session_state or st.session_state.CONN is None:
     st.session_state.CONN = snowflake.connector.connect(
