@@ -12,16 +12,16 @@ import os
 # STAGE = process.env.STAGE
 # FILE = process.env.FILE
 
-HOST = "zjfnosn-ji26552.snowflakecomputing.com"
-DATABASE = "CORTEX_ANALYST_DEMO"
-SCHEMA = "PO_DEMO"
-STAGE = "RAW_DATA"
-FILE = "po_demo.yaml"
+HOST = st.secrets['HOST']
+DATABASE = st.secrets['DATABASE']
+SCHEMA = st.secrets['SCHEMA']
+STAGE = st.secrets['STAGE'] 
+FILE = st.secrets['FILE']
 DB_PASSWORD = st.secrets['DB_PASSWORD']
 
 if 'CONN' not in st.session_state or st.session_state.CONN is None:
     st.session_state.CONN = snowflake.connector.connect(
-        user="fourarms22",
+        user=st.secrets['USER'],
         password=DB_PASSWORD,
         account="JI26552",
         host=HOST,
